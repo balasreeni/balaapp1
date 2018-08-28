@@ -1,0 +1,49 @@
+spring:
+  zipkin:
+    base-url: http://9.42.9.171:9411
+  data:
+    mongodb:
+     uri : mongodb://9.42.9.171:27017/billing_app1
+
+    redis:
+      host: 9.195.94.84
+      port: 6379
+      cache: 
+        expiry: 86400   #in sec
+      repositories:
+        enabled: false   
+  activemq:
+    broker-url: tcp://9.42.41.87:61616
+    user: admin
+    password: admin
+  jms:
+    pub-sub-domain: true
+  kafka:
+    bootstrap-servers: 9.42.41.87:9092
+    consumer:
+      group-id: message-group
+messaging:
+    provider: activemq
+    delay: 120000
+    topic: err-msg-topic
+    enabled: false   
+  #datasource:
+    #url: jdbc:mysql://mysql:3306/payments
+    #username: admin
+    #password: password
+    
+  #jpa:
+   #hibernate:
+     #ddl-auto: create   
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://eureka:8761/svcsdiscovery/eureka/
+      defaultZone: http://9.42.9.171:8761/eureka/
+  instance:
+    homePageUrl: http://billing_app1:8080/
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 10
+    hostname: billing_app1
+    nonSecurePort: 8080
+    instance-id: billing_app1
